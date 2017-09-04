@@ -1,7 +1,9 @@
 # VOOF_Cam
 
-The folder Voof_ros2 contains the Arduino code for the sensor. 
+The folder Voof_ros2 contains the Arduino code for the sensor and voof_dyn is the package that defines the reconfigurable paramters. You can change the default values and their ranges from voof.cfg file in the cfg folder.
+
 Using this code you can dynamically reconfigure paramters from ROS and publish a transform from odom frame to base_link frame on the topic /tf
+
 To use it in ROS, you will require ROSSERIAL and dynamic_reconfigure. After getting these packages, follow these steps to use the sensor:
 
 1: Start the rosmaster : $roscore
