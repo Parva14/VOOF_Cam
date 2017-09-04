@@ -7,6 +7,7 @@ To use it in ROS, you will require ROSSERIAL and dynamic_reconfigure. After gett
 1: Start the rosmaster : $roscore
 
 2: Run the node: $rosrun voof_dyn server.py
+
    Now you should see the parameters when by using $rosparam list
    
 3: $rosrun rqt_gui rqt_gui -s reconfigure
