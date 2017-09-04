@@ -11,6 +11,7 @@ To use it in ROS, you will require ROSSERIAL and dynamic_reconfigure. After gett
    Now you should see the parameters when by using $rosparam list
    
 3: $rosrun rqt_gui rqt_gui -s reconfigure
+
    This command will open a GUI from which you can change the ros parameters
    
 4: $rosrun rosserial_python serial_node.py /dev/ttyACM0 _baud:=9600
