@@ -303,7 +303,7 @@ void loop()
 {
 
  update_Param();
-// sensor_data();
+ sensor_data();
  Serial.flush();
  
 }
@@ -316,15 +316,15 @@ void update_Param()
   nh.getParam("/voof_dyn/tune_squal_1", &tune_squal_1);
   nh.getParam("/voof_dyn/tune_squal_2", &tune_squal_2);
 
-  Serial.print(tune_imu);
-  Serial.print(" ");
-  Serial.print(tune_cam_1);
-  Serial.print(" ");
-  Serial.print(tune_cam_2);
-  Serial.print(" ");
-  Serial.print(tune_squal_1);
-  Serial.print(" ");
-  Serial.println(tune_squal_2);
+ // Serial.print(tune_imu);
+ // Serial.print(" ");
+ // Serial.print(tune_cam_1);
+ // Serial.print(" ");
+ // Serial.print(tune_cam_2);
+ // Serial.print(" ");
+ // Serial.print(tune_squal_1);
+ // Serial.print(" ");
+ // Serial.println(tune_squal_2);
   
   
 }
