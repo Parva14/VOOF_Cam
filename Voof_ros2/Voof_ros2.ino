@@ -1,5 +1,6 @@
 #include <ros.h>
 #include <ros/time.h>
+#include <tf/tf.h>
 #include <tf/transform_broadcaster.h>
 
 
@@ -179,7 +180,7 @@ char odom[] = "/odom";
 void setup()
 {
   //initializing ros node
-  nh.getHardware()->setBaud(9600);
+  nh.getHardware()->setBaud(115200);
   nh.initNode();
   broadcaster.init(nh);
 
@@ -305,6 +306,7 @@ void loop()
  update_Param();
  sensor_data();
  Serial.flush();
+ delay(3);
  
 }
 
@@ -406,16 +408,16 @@ void sensor_data()
 
   // output the data
  
-  Serial.print(raw_dx, DEC);
-  Serial.print(",");
-  Serial.print(raw_dy, DEC);
-  Serial.print(",");
-  Serial.print(squal_1);
-  Serial.print(",");
-  Serial.print(squal_2);
-  Serial.print(",");
-  Serial.print(current_angle, DEC);
-  Serial.println(",");
+  //Serial.print(raw_dx, DEC);
+  //Serial.print(",");
+ // Serial.print(raw_dy, DEC);
+ // Serial.print(",");
+ // Serial.print(squal_1);
+ // Serial.print(",");
+ // Serial.print(squal_2);
+ // Serial.print(",");
+ // Serial.print(current_angle, DEC);
+//  Serial.println(",");
   
 //publish transforms over topic /tf
   publish_tf();
@@ -434,11 +436,8 @@ void publish_tf()
   //transform
   t.transform.translation.x += raw_dx;
   t.transform.translation.y += raw_dy; 
-  t.transform.rotation.x = 0.0;
-  t.transform.rotation.y = 0.0; 
-  t.transform.rotation.z = sin(current_angle*0.5); 
-  t.transform.rotation.w = cos(current_angle*0.5);  
-
+  t.transform.rotation = tf::createQuaternionFromYaw(current_angle);
+  
   //broadcaster
   t.header.stamp = nh.now();
   broadcaster.sendTransform(t);
