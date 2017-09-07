@@ -16,7 +16,7 @@ To use it in ROS, you will require ROSSERIAL and dynamic_reconfigure. After gett
 
    This command will open a GUI from which you can change the ros parameters
    
-4: $rosrun rosserial_python serial_node.py /dev/ttyACM0 _baud:=9600
+4: $rosrun rosserial_python serial_node.py /dev/ttyACM0 _baud:=115200
 
    This command will start the communication between ros and arduino. Make sure your Serial monitor is OFF while you run this    ommand and DO NOT FORGET to kill it while uploading your code. In short, Don't use Arduino's serial port while it is connected with ROS
     
