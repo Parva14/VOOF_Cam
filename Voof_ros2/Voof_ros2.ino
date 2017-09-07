@@ -436,7 +436,7 @@ void publish_tf()
   //transform
   t.transform.translation.x += raw_dx;
   t.transform.translation.y += raw_dy; 
-  t.transform.rotation = tf::createQuaternionFromYaw(current_angle);
+  t.transform.rotation = tf::createQuaternionFromYaw(nonzeroed_imu_angle);
   
   //broadcaster
   t.header.stamp = nh.now();
