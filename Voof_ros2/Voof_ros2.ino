@@ -94,18 +94,18 @@ boolean _overflow = false;
 boolean _motion = false;
 // computation distance values
 /// Calculated int to measure total change in x direction
-signed int raw_dx;
+float raw_dx;
 /// Calculated int to measure total change in y direction
-signed int raw_dy;
+float raw_dy;
 // buffer distance values
 /// Buffer int to measure change in x direction of the first cam
-signed int raw_dx_1;
+float raw_dx_1;
 /// Buffer int to measure change in y direction of the first cam
-signed int raw_dy_1;
-/// Buffer int to measure change in x direction of the second cam
-signed int raw_dx_2;
+float int raw_dy_1;
+/// Buffer int to measure change in x direction of the second camm
+float raw_dx_2;
 /// Buffer int to measure change in y direction of the second cam
-signed int raw_dy_2;
+float raw_dy_2;
 // angle values
 /// Last angle measurement for calculating change in angle
 float last_imu_angle;
