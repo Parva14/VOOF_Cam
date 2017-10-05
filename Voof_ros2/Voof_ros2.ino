@@ -101,7 +101,7 @@ float raw_dy;
 /// Buffer int to measure change in x direction of the first cam
 float raw_dx_1;
 /// Buffer int to measure change in y direction of the first cam
-float int raw_dy_1;
+float raw_dy_1;
 /// Buffer int to measure change in x direction of the second camm
 float raw_dx_2;
 /// Buffer int to measure change in y direction of the second cam
