@@ -102,7 +102,7 @@ float raw_dy;
 float raw_dx_1;
 /// Buffer int to measure change in y direction of the first cam
 float raw_dy_1;
-/// Buffer int to measure change in x direction of the second camm
+/// Buffer int to measure change in x direction of the second cam
 float raw_dx_2;
 /// Buffer int to measure change in y direction of the second cam
 float raw_dy_2;
@@ -318,15 +318,15 @@ void update_Param()
   nh.getParam("/voof_dyn/tune_squal_1", &tune_squal_1);
   nh.getParam("/voof_dyn/tune_squal_2", &tune_squal_2);
 
- // Serial.print(tune_imu);
- // Serial.print(" ");
- // Serial.print(tune_cam_1);
- // Serial.print(" ");
- // Serial.print(tune_cam_2);
- // Serial.print(" ");
- // Serial.print(tune_squal_1);
- // Serial.print(" ");
- // Serial.println(tune_squal_2);
+//  Serial.print(tune_imu);
+//  Serial.print(" ");
+//  Serial.print(tune_cam_1);
+//  Serial.print(" ");
+//  Serial.print(tune_cam_2);
+//  Serial.print(" ");
+//  Serial.print(tune_squal_1);
+//  Serial.print(" ");
+//  Serial.println(tune_squal_2);
   
   
 }
@@ -408,16 +408,16 @@ void sensor_data()
 
   // output the data
  
-  //Serial.print(raw_dx, DEC);
-  //Serial.print(",");
- // Serial.print(raw_dy, DEC);
- // Serial.print(",");
- // Serial.print(squal_1);
- // Serial.print(",");
- // Serial.print(squal_2);
- // Serial.print(",");
- // Serial.print(current_angle, DEC);
-//  Serial.println(",");
+//  Serial.print(raw_dx);
+//  Serial.print("  ");
+//  Serial.print(raw_dy);
+//  Serial.print("  ");
+  Serial.print(squal_1);
+  Serial.print("  ");
+  Serial.print(squal_2);
+  //Serial.print("  ");
+//  Serial.print(current_angle);
+ Serial.println("  ");
   
 //publish transforms over topic /tf
   publish_tf();
@@ -434,10 +434,14 @@ void publish_tf()
   t.child_frame_id = base_link;
 
   //transform
-  t.transform.translation.x += raw_dx;
-  t.transform.translation.y += raw_dy; 
+  t.transform.translation.x += (raw_dx/(2990*1.8));
+  t.transform.translation.y += (raw_dy/(2990)); 
   t.transform.rotation = tf::createQuaternionFromYaw(nonzeroed_imu_angle);
-  
+//  t.transform.rotation.x = 0.0;
+//  t.transform.rotation.y = 0.0; 
+//  t.transform.rotation.z = sin(current_angle*0.5); 
+//  t.transform.rotation.w = cos(current_angle*0.5);  
+
   //broadcaster
   t.header.stamp = nh.now();
   broadcaster.sendTransform(t);
@@ -653,4 +657,3 @@ byte restore_spi_settings()
 
   return temp;
 }
-
